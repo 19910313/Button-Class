@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Class Example</title>
+    <style>
+      .form {
+        border: 1px solid #999;
+        padding: 20px;
+      }
+
+      button,
+      input {
+        padding: 20px;
+      }
+
+      button.success {
+        background-color: green;
+        color: white;
+      }
+
+      button.danger {
+        background-color: red;
+        color: white;
+      }
+
+      button.warning {
+        background-color: orange;
+        color: white;
+      }
+
+      button.disabled {
+        background-color: gray;
+        color: black;
+      }
+
+      button.default {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form class="form">
+      <input type="text" placeholder="some dummy input" />
+      <div id="actions">
+        <button></button>
+      </div>
+    </form>
+
+    <script>
+      class Button {
+        constructor(text, type, action, id) {
+          this.text = text;
+          this.type = type;
+          this.action = action;
+          this.id = id;
+        }
+
+        render(parent_id) {
+          let rootDiv = document.getElementById(this.id);
+          rootDiv.innerHTML = `
+          <button class="success" onclick="okAction()">OK</button>
+          <button class="danger" onclick="cancelAction()">Cancel</button>
+          `;
+        }
+      }
+
+      function okAction() {
+        alert("You've accepted");
+      }
+      function cancelAction() {
+        alert("You've canceled");
+      }
+      const okButton = new Button("OK", "success", "test1", "actions");
+      const okButton2 = new Button("Cancel", "danger", "test2", "actions");
+      okButton.render();
+      okButton2.render();
+      //  ???
+    </script>
+  </body>
+</html>
